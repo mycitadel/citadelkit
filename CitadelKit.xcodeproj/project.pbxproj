@@ -18,8 +18,10 @@
 		3014053B25EAF7E000F4AA07 /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C7C1B65E25053DA1E4017C /* Signer.swift */; };
 		3014053F25EAF7E300F4AA07 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C7C777A9E533309028B722 /* Vault.swift */; };
 		3015233025E5C58D00069C06 /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3015232F25E5C58D00069C06 /* Combine.framework */; };
-		301CBFE42602BD0D0072FFF2 /* citadel.h in Headers */ = {isa = PBXBuildFile; fileRef = 301CBFE32602BD0D0072FFF2 /* citadel.h */; };
-		301CBFE52602BD0D0072FFF2 /* citadel.h in Headers */ = {isa = PBXBuildFile; fileRef = 301CBFE32602BD0D0072FFF2 /* citadel.h */; };
+		301CBFF3260378980072FFF2 /* citadel.h in Headers */ = {isa = PBXBuildFile; fileRef = 301CBFF2260378980072FFF2 /* citadel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		301CBFF4260378980072FFF2 /* citadel.h in Headers */ = {isa = PBXBuildFile; fileRef = 301CBFF2260378980072FFF2 /* citadel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		301CBFFD260379410072FFF2 /* libcitadel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301CBFFC2603793B0072FFF2 /* libcitadel.a */; };
+		301CC00F26037B7C0072FFF2 /* libcitadel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301CC00E26037B700072FFF2 /* libcitadel.a */; };
 		3037C6D625F3A58600048CDD /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037C6D525F3A58600048CDD /* Parser.swift */; };
 		3037C6D725F3A58600048CDD /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3037C6D525F3A58600048CDD /* Parser.swift */; };
 		304DE85825C6F8B9008FE0A4 /* CitadelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 304DE84E25C6F8B9008FE0A4 /* CitadelKit.framework */; };
@@ -63,7 +65,9 @@
 		3014050725EAF54000F4AA07 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		3014050925EAF54A00F4AA07 /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Combine.framework; sourceTree = DEVELOPER_DIR; };
 		3015232F25E5C58D00069C06 /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = System/Library/Frameworks/Combine.framework; sourceTree = SDKROOT; };
-		301CBFE32602BD0D0072FFF2 /* citadel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = citadel.h; path = ../../libcitadel/citadel.h; sourceTree = "<group>"; };
+		301CBFF2260378980072FFF2 /* citadel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = citadel.h; sourceTree = "<group>"; };
+		301CBFFC2603793B0072FFF2 /* libcitadel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcitadel.a; path = ../libcitadel/target/universal/release/libcitadel.a; sourceTree = "<group>"; };
+		301CC00E26037B700072FFF2 /* libcitadel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcitadel.a; path = ../libcitadel/target/release/libcitadel.a; sourceTree = "<group>"; };
 		3037C6D525F3A58600048CDD /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		304DE84E25C6F8B9008FE0A4 /* CitadelKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CitadelKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		304DE85125C6F8B9008FE0A4 /* CitadelKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CitadelKit.h; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301CC00F26037B7C0072FFF2 /* libcitadel.a in Frameworks */,
 				3014050A25EAF54A00F4AA07 /* Combine.framework in Frameworks */,
 				3014050D25EAF59B00F4AA07 /* libc++.tbd in Frameworks */,
 				3014050825EAF54000F4AA07 /* Security.framework in Frameworks */,
@@ -97,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301CBFFD260379410072FFF2 /* libcitadel.a in Frameworks */,
 				304DE93C25C72736008FE0A4 /* libc++.tbd in Frameworks */,
 				3006DD4325E40D3C00E8DAAA /* Security.framework in Frameworks */,
 				3015233025E5C58D00069C06 /* Combine.framework in Frameworks */,
@@ -125,7 +131,7 @@
 		304DE84425C6F8B9008FE0A4 = {
 			isa = PBXGroup;
 			children = (
-				301CBFE32602BD0D0072FFF2 /* citadel.h */,
+				301CBFF2260378980072FFF2 /* citadel.h */,
 				304DE85125C6F8B9008FE0A4 /* CitadelKit.h */,
 				3037C6D525F3A58600048CDD /* Parser.swift */,
 				304DE86E25C6F927008FE0A4 /* CAPI.swift */,
@@ -174,6 +180,8 @@
 		304DE87425C6FA75008FE0A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				301CBFFC2603793B0072FFF2 /* libcitadel.a */,
+				301CC00E26037B700072FFF2 /* libcitadel.a */,
 				3014050925EAF54A00F4AA07 /* Combine.framework */,
 				3014050725EAF54000F4AA07 /* Security.framework */,
 				3015232F25E5C58D00069C06 /* Combine.framework */,
@@ -190,8 +198,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301CBFF4260378980072FFF2 /* citadel.h in Headers */,
 				3014051D25EAF7C900F4AA07 /* CitadelKit.h in Headers */,
-				301CBFE52602BD0D0072FFF2 /* citadel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,8 +207,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301CBFF3260378980072FFF2 /* citadel.h in Headers */,
 				304DE85F25C6F8B9008FE0A4 /* CitadelKit.h in Headers */,
-				301CBFE42602BD0D0072FFF2 /* citadel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +352,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# The $PATH used by Xcode likely won't contain Cargo, fix that.\n# This assumes a default `rustup` setup.\nexport PATH=\"$HOME/.cargo/bin:$PATH\"\n\n# --xcode-integ determines --release and --targets from Xcode's env vars.\n# Depending your setup, specify the rustup toolchain explicitly.\ncargo lipo --manifest-path ../../libcitadel/Cargo.toml --release #--xcode-integ\n";
+			shellScript = "# The $PATH used by Xcode likely won't contain Cargo, fix that.\n# This assumes a default `rustup` setup.\nexport PATH=\"$HOME/.cargo/bin:$PATH\"\n\n# --xcode-integ determines --release and --targets from Xcode's env vars.\n# Depending your setup, specify the rustup toolchain explicitly.\ncargo lipo --manifest-path ../libcitadel/Cargo.toml --release #--xcode-integ\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -425,7 +433,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(SOURCE_ROOT)/../../target/release/";
+				LIBRARY_SEARCH_PATHS = "$(SOURCE_ROOT)/../libcitadel/target/release/";
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.mycitadel.kit.mac;
 				PRODUCT_NAME = CitadelKit;
@@ -453,7 +461,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(SOURCE_ROOT)/../../target/release/";
+				LIBRARY_SEARCH_PATHS = "$(SOURCE_ROOT)/../libcitadel/target/release/";
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.mycitadel.kit.mac;
 				PRODUCT_NAME = CitadelKit;
@@ -607,7 +615,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(SOURCE_ROOT)/../../target/universal/release/";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/../libcitadel/target/universal/release/",
+					"$(PROJECT_DIR)/Libs",
+				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.mycitadel.kit.ios;
 				PRODUCT_NAME = CitadelKit;
@@ -637,7 +648,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(SOURCE_ROOT)/../../target/universal/release/";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/../libcitadel/target/universal/release/",
+					"$(PROJECT_DIR)/Libs",
+				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.mycitadel.kit.ios;
 				PRODUCT_NAME = CitadelKit;

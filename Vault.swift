@@ -60,7 +60,7 @@ open class CitadelVault {
                 rgbNode: rgbNode, lnpNode: lnpNode, electrumServer: electrumServer)
     }
 
-    internal private(set) var rpcClient: UnsafeMutablePointer<mycitadel_client_t>!
+    internal private(set) var rpcClient: UnsafeMutablePointer<citadel_client_t>!
 
     let dataDir: String
     public let network: BitcoinNetwork
@@ -96,13 +96,13 @@ open class CitadelVault {
         self.network = network
         dataDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(network.rawValue).path
         print("Data directory: \(dataDir)")
-        rpcClient = mycitadel_run_embedded(network.rawValue, self.dataDir, electrumServer)
+        rpcClient = citadel_run_embedded(network.rawValue, self.dataDir, electrumServer)
         assets[network.nativeAssetId()] = NativeAsset(withCitadelVault: self)
     }
 
     deinit {
         // TODO: Teardown client
-        // mycitadel_shutdown(self.client)
+        // citadel_shutdown(self.client)
     }
 }
 

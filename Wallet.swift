@@ -131,7 +131,7 @@ public class WalletContract: Identifiable {
         return PaymentResult(txid: txid, consignment: transfer.consignment)
     }
 
-    public func accept(consignment: String) throws -> String {
+    public func accept(consignment: String) throws -> ValidationStatus {
         try vault.accept(consignment: consignment)
     }
 }

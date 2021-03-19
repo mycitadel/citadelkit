@@ -90,6 +90,19 @@ public struct Transfer {
     public let consignment: String?
 }
 
+public enum Validity {
+    case valid
+    case unresolvedTransactions
+    case invalid
+}
+
+public struct ValidationStatus {
+    public let validity: Validity
+    public let info: [String]
+    public let warnings: [String]
+    public let failures: [String]
+}
+
 extension CitadelVault {
     public func lastError() -> CitadelError? {
         if citadel_has_err(rpcClient) {
@@ -240,9 +253,45 @@ extension CitadelVault {
         return try processResponseToString(txid)
     }
 
-    internal func accept(consignment: String) throws -> String {
+    internal func accept(consignment: String) throws -> ValidationStatus {
         print("Accepting consignment")
         let status = citadel_invoice_accept(rpcClient, consignment)
-        return try processResponseToString(status)
+        print("Status: \(status)")
+        if status.validity == VALIDITY_T_UNABLE_TO_VALIDATE {
+            guard let err = lastError() else {
+                throw CitadelError("MyCitadel C API is broken")
+            }
+            throw err
+        }
+
+        var info = [String]()
+        for i in 0..<status.info_len {
+            if let item = status.info[Int(i)] {
+                info.append(String(cString: item))
+            }
+        }
+
+        var warn = [String]()
+        for i in 0..<status.warn_len {
+            if let item = status.info[Int(i)] {
+                warn.append(String(cString: item))
+            }
+        }
+
+        var failures = [String]()
+        for i in 0..<status.failures_len {
+            if let item = status.info[Int(i)] {
+                failures.append(String(cString: item))
+            }
+        }
+
+        var validity = Validity.invalid;
+        switch status.validity {
+        case VALIDITY_T_VALID: validity = .valid
+        case VALIDITY_T_UNABLE_TO_VALIDATE: validity = .unresolvedTransactions
+        default: validity = .invalid
+        }
+
+        return ValidationStatus(validity: validity, info: info, warnings: warn, failures: failures)
     }
 }

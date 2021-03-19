@@ -157,6 +157,13 @@ typedef enum invoice_type {
         INVOICE_TYPE_PSBT,
 } invoice_type;
 
+typedef enum validity_t {
+        VALIDITY_T_UNABLE_TO_VALIDATE,
+        VALIDITY_T_VALID,
+        VALIDITY_T_UNRESOLVED_TX,
+        VALIDITY_T_INVALID,
+} validity_t;
+
 typedef struct bech32_info_t {
         int status;
         int category;
@@ -185,6 +192,16 @@ typedef struct prepared_transfer_t {
         const char *consignment_bech32;
         const char *psbt_base64;
 } prepared_transfer_t;
+
+typedef struct validation_status_t {
+        enum validity_t validity;
+        uint32_t info_len;
+        const char *const *info;
+        uint32_t warn_len;
+        const char *const *warn;
+        uint32_t failures_len;
+        const char *const *failures;
+} validation_status_t;
 
 #ifdef __cplusplus
 extern "C" {
@@ -262,8 +279,8 @@ struct prepared_transfer_t citadel_invoice_pay(struct citadel_client_t *client,
 const char *citadel_psbt_publish(struct citadel_client_t *client,
                                  const char *psbt);
 
-const char *citadel_invoice_accept(struct citadel_client_t *client,
-                                   const char *consignment);
+struct validation_status_t citadel_invoice_accept(struct citadel_client_t *client,
+                                                  const char *consignment);
 
 const char *citadel_asset_list(struct citadel_client_t *client);
 
